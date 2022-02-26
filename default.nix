@@ -4,9 +4,10 @@ let
   default = (import ./lib/compat).defaultNix;
 
   ciSystems = [
-    "aarch64-linux"
-    "i686-linux"
     "x86_64-linux"
+    "x86_64-darwin"
+    "i686-linux"
+    "aarch64-linux"
   ];
 
   filterSystems = lib.filterAttrs
