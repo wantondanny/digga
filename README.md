@@ -1,3 +1,4 @@
+[![Bors enabled](https://bors.tech/images/badge_small.svg)](https://app.bors.tech/repositories/42361)
 [![NixOS](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat&logo=NixOS&logoColor=white)](https://nixos.org)
 [![MIT License](https://img.shields.io/github/license/divnix/devos)][mit]
 [![Chat](https://img.shields.io/matrix/devos:nixos.org.svg?label=%23devos%3Anixos.org&logo=matrix&server_fqdn=matrix.org)][matrix]

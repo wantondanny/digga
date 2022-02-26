@@ -1,0 +1,25 @@
+name: "Check & Cachix"
+on:
+  push:
+    branches:
+      - main
+      - trying
+      - staging
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.4.0
+    - uses: cachix/install-nix-action@v16
+      with:
+        install_url: https://github.com/numtide/nix-flakes-installer/releases/download/nix-2.7.0pre20220209_52f5231/install
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+          system-features = nixos-test benchmark big-parallel kvm recursive-nix
+    - uses: cachix/cachix-action@v10
+      with:
+        name: wantondanny
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - run: nix -Lv flake check --show-trace --keep-going
+    - run: nix -Lv build ".#nixosConfigurations.NixOS.config.system.build.toplevel"
+    - run: nix -Lv develop -c echo OK
